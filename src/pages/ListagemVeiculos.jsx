@@ -51,16 +51,14 @@ function ListagemVeiculos() {
           className={classes.actions}
           variant="contained"
           color="secondary"
-          disabled={!veiculoSelecionado}
-          onClick={() => excluir()}>
+          disabled={!veiculoSelecionado}>
           Excluir
         </Button>
         <Button
           className={classes.actions}
           variant="contained"
           color="primary"
-          disabled={!veiculoSelecionado}
-          onClick={() => alterar()}>
+          disabled={!veiculoSelecionado}>
           Alterar
         </Button>
       </div>
