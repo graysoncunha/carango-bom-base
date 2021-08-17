@@ -1,20 +1,23 @@
-import { Container, CssBaseline, makeStyles } from '@material-ui/core';
-import blue from '@material-ui/core/colors/blue';
-import { ptBR } from '@material-ui/core/locale';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import './App.css';
-import CadastroMarca from './pages/CadastroMarca';
-import ListagemMarcas from './pages/ListagemMarcas';
+import { Container, CssBaseline, makeStyles } from '@material-ui/core'
+import blue from '@material-ui/core/colors/blue'
+import { ptBR } from '@material-ui/core/locale'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import './App.css'
+import CadastroMarca from './pages/CadastroMarca'
+import ListagemMarcas from './pages/ListagemMarcas'
 
-const muiTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: blue[900],
-    }
+const muiTheme = createMuiTheme(
+  {
+    palette: {
+      primary: {
+        main: blue[900],
+      },
+    },
   },
-}, ptBR);
+  ptBR
+)
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,11 +34,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
-}));
+}))
 
 function App() {
-
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <ThemeProvider theme={muiTheme}>
@@ -48,7 +50,7 @@ function App() {
               <Route path="/cadastro-marca">
                 <CadastroMarca></CadastroMarca>
               </Route>
-              <Route path='/alteracao-marca/:id'>
+              <Route path="/alteracao-marca/:id">
                 <CadastroMarca></CadastroMarca>
               </Route>
               <Route path="/">
@@ -59,7 +61,7 @@ function App() {
         </main>
       </div>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
