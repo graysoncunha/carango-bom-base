@@ -1,10 +1,8 @@
-name: Eslint Action
+name: Build Action
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
   build:
     name: Run ESLint
@@ -23,3 +21,6 @@ jobs:
 
       - name: Run Eslint
         run: yarn lint
+
+      - name: Build project
+        run: yarn build
