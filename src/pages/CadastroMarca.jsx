@@ -5,7 +5,7 @@ import useErros from '../hooks/useErros'
 import MarcaService from '../services/MarcaService'
 
 function CadastroMarca() {
-  const [marca, setMarca] = useState('')
+  const [marca, setMarca] = useState("")
 
   const history = useHistory()
 
