@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Button, TextField, InputLabel, Select, MenuItem, FormControl } from '@material-ui/core'
+import { Button, TextField, MenuItem } from '@material-ui/core'
 import { useHistory, useParams } from 'react-router'
 import useErros from '../hooks/useErros'
 import VeiculoService from '../services/VeiculoService'
 import MarcaService from '../services/MarcaService'
 
 function CadastroVeiculo() {
-  const [veiculo, setVeiculo] = useState('')
+  const [veiculo, setVeiculo] = useState({
+    marca: '',
+    modelo: '',
+    ano: '',
+    valor: '',
+  })
   const [marcas, setMarcas] = useState([])
 
   const history = useHistory()
@@ -63,9 +68,6 @@ function CadastroVeiculo() {
     <form
       onSubmit={(event) => {
         event.preventDefault()
-        console.log(veiculo)
-
-        // return
 
         if (possoEnviar()) {
           if (id) {
@@ -81,29 +83,32 @@ function CadastroVeiculo() {
         }
       }}
     >
-      <FormControl error={!erros.marca.valido} fullWidth required variant="outlined">
-        <InputLabel id="marca-label">Marca</InputLabel>
-        <Select
-          name="marca"
-          id="marca"
-          label="marca"
-          labelId="marca-label"
-          value={veiculo.marca}
-          onChange={(evt) =>
-            setVeiculo((prevState) => ({
-              ...prevState,
-              marca: evt.target.value,
-            }))
-          }
-        >
-          {marcas &&
-            marcas.map(({ id, nome }) => (
-              <MenuItem key={id} value={id}>
-                {nome}
-              </MenuItem>
-            ))}
-        </Select>
-      </FormControl>
+      <TextField
+        value={veiculo.marca}
+        onChange={(evt) =>
+          setVeiculo((prevState) => ({
+            ...prevState,
+            marca: evt.target.value,
+          }))
+        }
+        helperText={erros.modelo.texto}
+        error={!erros.modelo.valido}
+        name="marca"
+        id="marca"
+        label="Marca"
+        select
+        variant="outlined"
+        fullWidth
+        required
+        margin="normal"
+      >
+        {marcas &&
+          marcas.map(({ id, nome }) => (
+            <MenuItem key={id} value={id}>
+              {nome}
+            </MenuItem>
+          ))}
+      </TextField>
 
       <TextField
         value={veiculo.modelo}
