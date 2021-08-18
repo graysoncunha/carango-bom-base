@@ -5,7 +5,7 @@ import useErros from '../hooks/useErros'
 import MarcaService from '../services/MarcaService'
 
 function CadastroMarca() {
-  const [marca, setMarca] = useState("")
+  const [marca, setMarca] = useState('')
 
   const history = useHistory()
 
@@ -68,12 +68,7 @@ function CadastroMarca() {
         margin="normal"
       />
 
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        disabled={!possoEnviar()}
-      >
+      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()}>
         {id ? 'Alterar' : 'Cadastrar'}
       </Button>
 
