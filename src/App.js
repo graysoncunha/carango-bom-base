@@ -1,11 +1,12 @@
+import React from 'react'
 import { Container, CssBaseline, makeStyles } from '@material-ui/core'
 import blue from '@material-ui/core/colors/blue'
 import { ptBR } from '@material-ui/core/locale'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import React from 'react'
 import './App.css'
 
 import Routes from './routes'
+import Header from './components/Header'
 
 const muiTheme = createMuiTheme(
   {
@@ -46,6 +47,7 @@ function App() {
           <div className={classes.toolbar} />
           <Container component="article" maxWidth="md">
             <Routes />
+            <Header />
           </Container>
         </main>
       </div>
