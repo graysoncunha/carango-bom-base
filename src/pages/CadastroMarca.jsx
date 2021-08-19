@@ -68,12 +68,7 @@ function CadastroMarca() {
         margin="normal"
       />
 
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        disabled={!possoEnviar()}
-      >
+      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()}>
         {id ? 'Alterar' : 'Cadastrar'}
       </Button>
 
