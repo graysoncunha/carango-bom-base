@@ -53,22 +53,21 @@ function CadastroVeiculo() {
 
   const [erros, validarCampos, possoEnviar] = useErros(validacoes)
 
-  useEffect(() => carregarMarcas(), [])
+  useEffect(async () => {
+    const marcas = await MarcaService.listar()
+    setMarcas(marcas)
+  }, [])
 
-  function carregarMarcas() {
-    MarcaService.listar().then((dados) => setMarcas(dados))
-  }
-
-  useEffect(() => {
+  useEffect(async () => {
     if (id) {
-      VeiculoService.consultar(id).then((dados) =>
-        setVeiculo({
-          marca: dados.marca.id,
-          modelo: dados.modelo,
-          ano: dados.ano,
-          valor: dados.valor,
-        })
-      )
+      const veiculo = await VeiculoService.consultar(id)
+
+      setVeiculo({
+        marca: veiculo.marca.id,
+        modelo: veiculo.modelo,
+        ano: veiculo.ano,
+        valor: veiculo.valor,
+      })
     }
   }, [id])
 
