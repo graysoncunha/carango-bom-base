@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, TextField, MenuItem } from '@material-ui/core'
 import { useHistory, useParams } from 'react-router'
+import { Button, TextField, MenuItem } from '@material-ui/core'
 import useErros from '../hooks/useErros'
 import VeiculoService from '../services/VeiculoService'
 import MarcaService from '../services/MarcaService'
@@ -15,7 +15,6 @@ function CadastroVeiculo() {
   const [marcas, setMarcas] = useState([])
 
   const history = useHistory()
-
   const { id } = useParams()
 
   const validacoes = {
@@ -54,14 +53,27 @@ function CadastroVeiculo() {
 
   const [erros, validarCampos, possoEnviar] = useErros(validacoes)
 
-  function cancelar() {
-    history.goBack()
-  }
-
   useEffect(() => carregarMarcas(), [])
 
   function carregarMarcas() {
     MarcaService.listar().then((dados) => setMarcas(dados))
+  }
+
+  useEffect(() => {
+    if (id) {
+      VeiculoService.consultar(id).then((dados) =>
+        setVeiculo({
+          marca: dados.marca.id,
+          modelo: dados.modelo,
+          ano: dados.ano,
+          valor: dados.valor,
+        })
+      )
+    }
+  }, [id])
+
+  function cancelar() {
+    history.goBack()
   }
 
   return (

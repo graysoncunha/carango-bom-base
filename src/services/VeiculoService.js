@@ -7,10 +7,14 @@ const VeiculoService = {
   },
 
   alterar(veiculo) {
-    return fetch(`https://carango-bom-api.herokuapp.com/marcas/${veiculo.id}`, {
+    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${veiculo.id}`, {
       method: 'PUT',
       body: JSON.stringify(veiculo),
     }).then((r) => r.json())
+  },
+
+  consultar(id) {
+    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`).then((r) => r.json())
   },
 
   listar() {

@@ -13,6 +13,7 @@ function Routes() {
       <Route exact path="/cadastro-marca" component={CadastroMarca} />
       <Route exact path="/alteracao-marca/:id" component={CadastroMarca} />
       <Route exact path="/cadastro-veiculo" component={CadastroVeiculo} />
+      <Route exact path="/alteracao-veiculo/:id" component={CadastroVeiculo} />
     </Switch>
   )
 }
