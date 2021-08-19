@@ -27,13 +27,13 @@ function CadastroVeiculo() {
       }
     },
     modelo: (dado) => {
-      if (dado && dado.length >= 3) {
-        return { valido: true }
-      } else {
+      if (!dado || dado.length < 2) {
         return {
           valido: false,
-          texto: 'Modelo deve ter ao menos 3 caracteres.',
+          texto: 'Modelo deve ter ao menos 2 caracteres.',
         }
+      } else {
+        return { valido: true }
       }
     },
     ano: (dado) => {
@@ -71,12 +71,17 @@ function CadastroVeiculo() {
 
         if (possoEnviar()) {
           if (id) {
-            MarcaService.alterar({ id, nome: veiculo }).then((res) => {
+            VeiculoService.alterar({ id, ...veiculo }).then((res) => {
               history.goBack()
             })
           } else {
-            MarcaService.cadastrar({ nome: veiculo }).then((res) => {
-              setVeiculo('')
+            VeiculoService.cadastrar({ ...veiculo }).then((res) => {
+              setVeiculo({
+                marca: '',
+                modelo: '',
+                ano: '',
+                valor: '',
+              })
               history.goBack()
             })
           }
@@ -91,8 +96,8 @@ function CadastroVeiculo() {
             marca: evt.target.value,
           }))
         }
-        helperText={erros.modelo.texto}
-        error={!erros.modelo.valido}
+        helperText={erros.marca.texto}
+        error={!erros.marca.valido}
         name="marca"
         id="marca"
         label="Marca"
