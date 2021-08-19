@@ -1,7 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { MemoryRouter, BrowserRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import CadastroVeiculo from './CadastroVeiculo'
+import Routes from '../routes'
 
 describe('Componente de cadastro de veículos', () => {
   it('deve carregar a página de cadastro de veículo', () => {
@@ -11,9 +12,14 @@ describe('Componente de cadastro de veículos', () => {
   })
 
   it('deve carregar a página de alteração de veículo', async () => {
-    renderWithRouter(<CadastroVeiculo />, { route: '/alteracao-veiculo/139' })
+    render(
+      <Routes path="/alteracao-veiculo/:id">
+        <CadastroVeiculo />
+      </Routes>,
+      { route: '/alteracao-veiculo/139' }
+    )
 
-    expect((await screen.findByText('Alterar')).textContent).toBeInTheDocument()
+    expect(screen.getByText('Alterar')).toBeInTheDocument()
   })
 
   // TODO: Ver se a função submit foi chamada com o clique do botão
@@ -28,8 +34,8 @@ describe('Componente de cadastro de veículos', () => {
   //   })
 })
 
-const renderWithRouter = (ui, { route = '/' } = {}) => {
-  history.pushState({}, 'Test page', route)
+// const renderWithRouter = (ui, { route = '/' } = {}) => {
+//   history.pushState({}, 'Test page', route)
 
-  return render(ui, { wrapper: BrowserRouter })
-}
+//   return render(ui, { wrapper: BrowserRouter })
+// }
