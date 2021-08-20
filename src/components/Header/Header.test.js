@@ -7,21 +7,21 @@ import App from '../../App'
 import headerLinks from './links.json'
 
 describe('Componente Header', () => {
-  it('ao clicar nos botões do header, deve alterar a rota para a rota esperada', async () => {
+  it('ao clicar nos botões do header, deve alterar a rota para a rota esperada', () => {
     render(
       <Router>
         <App />
       </Router>
     )
 
-    const botoesNavbar = await screen.findAllByTestId('navbar')
+    const botoesNavbar = screen.getAllByTestId('navbar')
 
     for (const botao of botoesNavbar) {
       fireEvent.click(botao)
 
-      const rota = headerLinks.find(({ href }) => href === botao.textContent)
+      const rota = headerLinks.find(({ label }) => label === botao.textContent)
 
-      waitFor(() => expect(window.location.pathname).toBe(rota.href))
+      expect(window.location.pathname).toBe(rota.href)
     }
   })
 })
