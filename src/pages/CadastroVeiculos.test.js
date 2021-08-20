@@ -11,7 +11,7 @@ describe('Componente de cadastro de veículos', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('deve carregar a página de alteração de veículo', async () => {
+  it('deve carregar a página de alteração de veículo', () => {
     render(
       <Routes path="/alteracao-veiculo/:id">
         <CadastroVeiculo />
@@ -33,9 +33,3 @@ describe('Componente de cadastro de veículos', () => {
   //     expect(funcaoRealizarTransacao).toHaveBeenCalled()
   //   })
 })
-
-// const renderWithRouter = (ui, { route = '/' } = {}) => {
-//   history.pushState({}, 'Test page', route)
-
-//   return render(ui, { wrapper: BrowserRouter })
-// }
