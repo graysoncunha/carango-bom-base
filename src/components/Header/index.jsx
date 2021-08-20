@@ -37,7 +37,14 @@ function Header() {
             Carango Bom
           </Typography>
           {headerLinks.map(({ label, href }) => (
-            <Button key={label} color="inherit" to={href} component={Link} className={menuButtonStyle}>
+            <Button
+              key={label}
+              data-testid="navbar"
+              color="inherit"
+              to={href}
+              component={Link}
+              className={menuButtonStyle}
+            >
               {label}
             </Button>
           ))}
