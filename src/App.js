@@ -2,13 +2,13 @@ import React from 'react'
 import { Container, CssBaseline, makeStyles } from '@material-ui/core'
 import blue from '@material-ui/core/colors/blue'
 import { ptBR } from '@material-ui/core/locale'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
 
 import Routes from './routes'
 import Header from './components/Header'
 
-const muiTheme = createMuiTheme(
+const muiTheme = createTheme(
   {
     palette: {
       primary: {
@@ -22,6 +22,7 @@ const muiTheme = createMuiTheme(
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    height: '100%',
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
+  },
+  page: {
+    height: '90vh',
   },
 }))
 
