@@ -54,8 +54,5 @@
     "eslint-plugin-react": "^7.24.0",
     "jest-sonar-reporter": "^2.0.0",
     "prettier": "^2.3.2"
-  },
-  "jest": {
-    "testResultsProcessor": "jest-sonar-reporter"
   }
 }
