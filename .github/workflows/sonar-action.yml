@@ -1,4 +1,4 @@
-name: Sonar Analizer Action
+name: Sonar Analyzer Action
 on:
   push:
     branches:
