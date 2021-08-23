@@ -3,11 +3,9 @@ import blue from '@material-ui/core/colors/blue'
 import { ptBR } from '@material-ui/core/locale'
 import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
 import './App.css'
-import CadastroMarca from './pages/CadastroMarca'
-import ListagemMarcas from './pages/ListagemMarcas'
-import ListagemVeiculos from './pages/ListagemVeiculos/index'
+
+import Routes from './routes'
 
 const muiTheme = createTheme(
   {
@@ -50,21 +48,8 @@ function App() {
         <CssBaseline />
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Container component="article" maxWidth="md" className={classes.page}>
-            <Switch>
-              <Route path="/cadastro-marca">
-                <CadastroMarca></CadastroMarca>
-              </Route>
-              <Route path="/alteracao-marca/:id">
-                <CadastroMarca></CadastroMarca>
-              </Route>
-              <Route path="/lista-veiculos">
-                <ListagemVeiculos></ListagemVeiculos>
-              </Route>
-              <Route path="/">
-                <ListagemMarcas></ListagemMarcas>
-              </Route>
-            </Switch>
+          <Container component="article" maxWidth="md">
+            <Routes />
           </Container>
         </main>
       </div>
