@@ -1,14 +1,15 @@
 import { Container, CssBaseline, makeStyles } from '@material-ui/core'
 import blue from '@material-ui/core/colors/blue'
 import { ptBR } from '@material-ui/core/locale'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import CadastroMarca from './pages/CadastroMarca'
 import ListagemMarcas from './pages/ListagemMarcas'
+import ListagemVeiculos from './pages/ListagemVeiculos/index'
 
-const muiTheme = createMuiTheme(
+const muiTheme = createTheme(
   {
     palette: {
       primary: {
@@ -22,6 +23,7 @@ const muiTheme = createMuiTheme(
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    height: '100%',
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -34,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
+  page: {
+    height: '90vh',
+  },
 }))
 
 function App() {
@@ -45,13 +50,16 @@ function App() {
         <CssBaseline />
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Container component="article" maxWidth="md">
+          <Container component="article" maxWidth="md" className={classes.page}>
             <Switch>
               <Route path="/cadastro-marca">
                 <CadastroMarca></CadastroMarca>
               </Route>
               <Route path="/alteracao-marca/:id">
                 <CadastroMarca></CadastroMarca>
+              </Route>
+              <Route path="/lista-veiculos">
+                <ListagemVeiculos></ListagemVeiculos>
               </Route>
               <Route path="/">
                 <ListagemMarcas></ListagemMarcas>
