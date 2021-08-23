@@ -1,14 +1,21 @@
-import { Button, TextField } from '@material-ui/core'
+import { Button, TextField, makeStyles } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import useErros from '../hooks/useErros'
 import MarcaService from '../services/MarcaService'
 
+const useStyles = makeStyles(() => ({
+  actions: {
+    top: '10px',
+    marginRight: '10px',
+  },
+}))
+
 function CadastroMarca() {
   const [marca, setMarca] = useState('')
 
+  const classes = useStyles()
   const history = useHistory()
-
   const { id } = useParams()
 
   const validacoes = {
@@ -68,11 +75,11 @@ function CadastroMarca() {
         margin="normal"
       />
 
-      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()}>
+      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()} className={classes.actions}>
         {id ? 'Alterar' : 'Cadastrar'}
       </Button>
 
-      <Button variant="contained" color="secondary" onClick={cancelar}>
+      <Button variant="contained" color="secondary" onClick={cancelar} className={classes.actions}>
         Cancelar
       </Button>
     </form>
