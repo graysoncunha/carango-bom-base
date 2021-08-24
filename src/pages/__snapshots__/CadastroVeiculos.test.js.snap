@@ -55,10 +55,10 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
       </svg>
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legendLabelled-3"
+          class="PrivateNotchedOutline-legendLabelled-4"
         >
           <span>
             Marca
@@ -101,10 +101,10 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legendLabelled-3"
+          class="PrivateNotchedOutline-legendLabelled-4"
         >
           <span>
             Modelo
@@ -147,10 +147,10 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legendLabelled-3"
+          class="PrivateNotchedOutline-legendLabelled-4"
         >
           <span>
             Ano
@@ -193,10 +193,10 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        class="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legendLabelled-3"
+          class="PrivateNotchedOutline-legendLabelled-4"
         >
           <span>
             Valor
@@ -208,7 +208,7 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
     
   </div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-actions-1 MuiButton-containedPrimary"
     tabindex="0"
     type="submit"
   >
@@ -222,7 +222,7 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-actions-1 MuiButton-containedSecondary"
     tabindex="0"
     type="button"
   >

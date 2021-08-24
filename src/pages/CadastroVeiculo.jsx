@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
-import { Button, TextField, MenuItem } from '@material-ui/core'
+import { Button, TextField, MenuItem, makeStyles } from '@material-ui/core'
 import useErros from '../hooks/useErros'
 import VeiculoService from '../services/VeiculoService'
 import MarcaService from '../services/MarcaService'
+
+const useStyles = makeStyles(() => ({
+  actions: {
+    top: '10px',
+    marginRight: '10px',
+  },
+}))
 
 function CadastroVeiculo() {
   const [veiculo, setVeiculo] = useState({
@@ -14,6 +21,7 @@ function CadastroVeiculo() {
   })
   const [marcas, setMarcas] = useState([])
 
+  const classes = useStyles()
   const history = useHistory()
   const { id } = useParams()
 
@@ -189,11 +197,11 @@ function CadastroVeiculo() {
         margin="normal"
       />
 
-      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()}>
+      <Button variant="contained" color="primary" type="submit" disabled={!possoEnviar()} className={classes.actions}>
         {id ? 'Alterar' : 'Cadastrar'}
       </Button>
 
-      <Button variant="contained" color="secondary" onClick={cancelar}>
+      <Button variant="contained" color="secondary" onClick={cancelar} className={classes.actions}>
         Cancelar
       </Button>
     </form>
