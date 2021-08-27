@@ -18,15 +18,31 @@ const VeiculoService = {
   },
 
   listar() {
-    return fetch('https://carango-bom-api.herokuapp.com/veiculos').then((r) => r.json())
+    return fetch('https://carango-bom-api.herokuapp.com/veiculos')
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error('Ocorreu um erro ao listar os veículos.')
+        }
+        return r.json()
+      })
+      .catch((erro) => {
+        throw new Error(erro)
+      })
   },
 
   excluir(id) {
     return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`, {
       method: 'DELETE',
     })
-      .then((r) => r.json())
-      .catch((erro) => Error(erro))
+      .then((r) => {
+        if (!r.ok) {
+          throw new Error('Ocorreu um erro ao excluir o veículo.')
+        }
+        return r.json()
+      })
+      .catch((erro) => {
+        throw new Error(erro)
+      })
   },
 }
 
