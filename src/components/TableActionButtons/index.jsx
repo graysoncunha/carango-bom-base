@@ -18,7 +18,7 @@ function TableActionButtons({ row, onClickDelete, onClickEdit }) {
         aria-label="delete"
         className={classes.iconButton}
         onClick={() => onClickDelete(row)}
-        data-testid="deleteButton"
+        data-testid={`deleteButton${row.id}`}
       >
         <DeleteOutlineRoundedIcon />
       </IconButton>

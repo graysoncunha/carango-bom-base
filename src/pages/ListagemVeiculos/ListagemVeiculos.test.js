@@ -1,9 +1,8 @@
 import React from 'react'
-import { Router, MemoryRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import ListagemVeiculos from './index'
 import VeiculoService from '../../services/VeiculoService'
-import Routes from '../../routes'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 
 const veiculoMock = [
@@ -25,51 +24,55 @@ describe('Componente Listagem de Veículos', () => {
       jest.clearAllMocks()
       VeiculoService.listar.mockResolvedValue(veiculoMock)
     })
-    // it('Deve carregar o nome do veículo na página', async () => {
-    //   render(
-    //     <Router history={history}>
-    //       <ListagemVeiculos />
-    //     </Router>
-    //   )
-    //   const text = await screen.findByText(veiculoMock[0].modelo)
-    //   expect(text).toBeInTheDocument()
-    // })
-    // it('Deve carregar o nome da marca', async () => {
-    //   render(
-    //     <Router history={history}>
-    //       <ListagemVeiculos />
-    //     </Router>
-    //   )
-    //   const text = await screen.findByText(veiculoMock[0].marca.nome)
-    //   expect(text).toBeInTheDocument()
-    // })
-    it('Deve excluir veículo cadastrado', async () => {
-      VeiculoService.excluir.mockResolvedValue()
+    it('Deve carregar o nome do veículo na página', async () => {
       render(
-        <Routes>
+        <Router history={history}>
           <ListagemVeiculos />
-        </Routes>
+        </Router>
+      )
+      const text = await screen.findByText(veiculoMock[0].modelo)
+      expect(text).toBeInTheDocument()
+    })
+    it('Deve carregar o nome da marca', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+      const text = await screen.findByText(veiculoMock[0].marca.nome)
+      expect(text).toBeInTheDocument()
+    })
+    it('Deve excluir veículo cadastrado', async () => {
+      VeiculoService.excluir.mockImplementation((x) => x === veiculoMock[0].id && '200')
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
       )
 
-      waitFor(async () => {
-        const botaoDeletarVeiculo = screen.getByDisplayValue('Excluir')
-        console.log(botaoDeletarVeiculo)
-        fireEvent.click(botaoDeletarVeiculo)
-        console.log(await screen.findByText(veiculoMock[0].modelo))
-        expect(screen.findByText(veiculoMock[0].modelo)).not.toBeInTheDocument()
-      })
-      // await waitForElementToBeRemoved(() => screen.getByText(veiculoMock[0].modelo))
+      const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
+      fireEvent.click(botaoDeletarVeiculo)
+      expect(await screen.findByText(veiculoMock[0].modelo)).not.toBeInTheDocument()
     })
   })
-  // describe('Com as requests sendo rejeitadas', () => {
-  //   it('Deve renderizar uma mensagem de erro ao tentar carregar a lista de veículos', async () => {
-  //     VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao carregar os itens'))
-  //     render(
-  //       <Router history={history}>
-  //         <ListagemVeiculos />
-  //       </Router>
-  //     )
-  //     expect(await screen.findByText(/houve um erro ao carregar os itens/i)).toBeInTheDocument()
-  //   })
-  // })
+  describe('Com as requests sendo rejeitadas', () => {
+    it('Deve renderizar uma mensagem de erro ao tentar carregar a lista de veículos', async () => {
+      VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao carregar os itens'))
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+      expect(await screen.findByText(/houve um erro ao carregar os itens/i)).toBeInTheDocument()
+    })
+    it('Deve renderizar uma mensagem de erro ao tentar excluir um veículo', async () => {
+      VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao excluir o item'))
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+      expect(await screen.findByText(/houve um erro ao excluir o item/i)).toBeInTheDocument()
+    })
+  })
 })
