@@ -15,6 +15,8 @@
   "plugins": ["react"],
   "rules": {
     "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": false }],
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "react/prop-types": 0,
+    "react/display-name": 0
   }
 }
