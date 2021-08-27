@@ -13,7 +13,7 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ListagemMarcas} />
-        <Route path="/lista-veiculos" component={ListagemVeiculos} />
+        <Route path="/veiculos" component={ListagemVeiculos} />
         <Route path="/cadastro-marca" component={CadastroMarca} />
         <Route path="/alteracao-marca/:id" component={CadastroMarca} />
         <Route path="/cadastro-veiculo" component={CadastroVeiculo} />
