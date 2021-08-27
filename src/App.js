@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
 
 import Routes from './routes'
-import Header from './components/Header'
 
 const muiTheme = createTheme(
   {
@@ -51,7 +50,6 @@ function App() {
           <div className={classes.toolbar} />
           <Container component="article" maxWidth="md">
             <Routes />
-            <Header />
           </Container>
         </main>
       </div>
