@@ -17,10 +17,10 @@ function ListagemVeiculos() {
   const classes = useStyles()
   const history = useHistory()
 
-  const onClickDelete = (row) => {
+  const onClickDelete = async (row) => {
     try {
       setStatus({ status: 'loading' })
-      VeiculoService.excluir(row.id)
+      await VeiculoService.excluir(row.id)
       setVeiculos(veiculos.filter((veiculo) => veiculo.id !== row.id))
       setStatus({ status: 'fulfilled' })
     } catch (e) {
@@ -44,20 +44,20 @@ function ListagemVeiculos() {
   }, [])
 
   useEffect(() => {
+    const carregarDadosVeiculo = async () => {
+      let listaVeiculos
+      try {
+        setStatus({ status: 'loading' })
+        listaVeiculos = await VeiculoService.listar()
+        const listaVeiculosFormatada = formatarVeiculos(listaVeiculos)
+        setVeiculos(listaVeiculosFormatada)
+        setStatus({ status: 'fulfilled' })
+      } catch (e) {
+        setStatus({ status: 'rejected', error: e.message })
+      }
+    }
     carregarDadosVeiculo()
   }, [])
-
-  const carregarDadosVeiculo = async () => {
-    try {
-      setStatus({ status: 'loading' })
-      const listaVeiculos = await VeiculoService.listar()
-      const listaVeiculosFormatada = formatarVeiculos(listaVeiculos)
-      setVeiculos(listaVeiculosFormatada)
-      setStatus({ status: 'fulfilled' })
-    } catch (e) {
-      setStatus({ status: 'rejected', error: e.message })
-    }
-  }
 
   const formatarVeiculos = (listaVeiculos) => {
     return listaVeiculos.map((veiculo) => ({
@@ -84,6 +84,7 @@ function ListagemVeiculos() {
         pageSize={5}
         disableSelectionOnClick
         autoHeight
+        columnBuffer={5}
         components={{
           Pagination: CustomPagination,
         }}
