@@ -49,7 +49,7 @@ function App() {
         <CssBaseline />
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Container component="article" maxWidth="md">
+          <Container component="article" maxWidth="md" className={classes.page}>
             <Routes />
             <Header />
           </Container>
