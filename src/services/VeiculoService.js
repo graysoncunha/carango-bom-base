@@ -20,6 +20,14 @@ const VeiculoService = {
   listar() {
     return fetch('https://carango-bom-api.herokuapp.com/veiculos').then((r) => r.json())
   },
+
+  excluir(id) {
+    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`, {
+      method: 'DELETE',
+    })
+      .then((r) => r.json())
+      .catch((erro) => Error(erro))
+  },
 }
 
 export default VeiculoService
