@@ -1,45 +1,47 @@
-import { Button, Fab, makeStyles } from '@material-ui/core'
+import React, { useEffect, useState, useMemo } from 'react'
+import { Fab } from '@material-ui/core'
+import { useHistory } from 'react-router'
 import Alert from '@material-ui/lab/Alert'
 import { DataGrid } from '@material-ui/data-grid'
 import AddIcon from '@material-ui/icons/Add'
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router'
 import VeiculoService from '../../services/VeiculoService'
+import CustomPagination from '../../components/CustomPagination'
+import TableActionButtons from '../../components/TableActionButtons'
 
 import { formatCurrency } from '../../utils'
-
-const colunas = [
-  { field: 'modelo', headerName: 'Modelo', width: 300 },
-  { field: 'ano', headerName: 'Ano', width: 200 },
-  { field: 'marca', headerName: 'Marca', width: 200 },
-  { field: 'valor', headerName: 'Valor (R$)', width: 200 },
-]
-
-const useStyles = makeStyles((theme) => ({
-  fab: {
-    position: 'absolute',
-    bottom: '100px',
-    right: '100px',
-  },
-  actionsToolbar: {
-    float: 'right',
-  },
-  actions: {
-    top: '10px',
-    marginLeft: '10px',
-  },
-  alert: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
-}))
+import useStyles from './styles'
 
 function ListagemVeiculos() {
   const [veiculos, setVeiculos] = useState([])
   const [{ status, error }, setStatus] = useState({ status: 'idle', error: null })
-  const [veiculoSelecionado, setVeiculoSelecionado] = useState()
   const classes = useStyles()
   const history = useHistory()
+
+  const onClickDelete = (row) => {
+    try {
+      setStatus({ status: 'loading' })
+      VeiculoService.excluir(row.id)
+      setVeiculos(veiculos.filter((veiculo) => veiculo.id !== row.id))
+      setStatus({ status: 'fulfilled' })
+    } catch (e) {
+      setStatus({ status: 'rejected', error: e.message })
+    }
+  }
+
+  const colunas = useMemo(() => {
+    return [
+      { field: 'modelo', headerName: 'Modelo', flex: 3 },
+      { field: 'ano', headerName: 'Ano', flex: 2 },
+      { field: 'marca', headerName: 'Marca', flex: 2 },
+      { field: 'valor', headerName: 'Valor (R$)', flex: 2 },
+      {
+        field: '',
+        sortable: false,
+        flex: 1,
+        renderCell: (params) => <TableActionButtons row={params.row} onClickDelete={onClickDelete} />,
+      },
+    ]
+  }, [])
 
   useEffect(() => {
     carregarDadosVeiculo()
@@ -68,28 +70,24 @@ function ListagemVeiculos() {
   }
 
   return (
-    <div style={{ height: '50%', width: '100%' }}>
+    <div style={{ height: '400px', width: '100%' }}>
       {status === 'rejected' ? (
         <Alert severity="error" className={classes.alert}>
           {error}
         </Alert>
       ) : null}
       <DataGrid
+        className={classes.root}
         rows={veiculos}
         columns={colunas}
-        onRowSelected={(gridSelection) => setVeiculoSelecionado(gridSelection.data)}
-        rowsPerPageOptions={[20]}
-        pageSize={20}
+        rowsPerPageOptions={[5]}
+        pageSize={5}
+        disableSelectionOnClick
+        autoHeight
+        components={{
+          Pagination: CustomPagination,
+        }}
       />
-
-      <div className={classes.actionsToolbar}>
-        <Button className={classes.actions} variant="contained" color="secondary" disabled={!veiculoSelecionado}>
-          Excluir
-        </Button>
-        <Button className={classes.actions} variant="contained" color="primary" disabled={!veiculoSelecionado}>
-          Alterar
-        </Button>
-      </div>
 
       <Fab color="primary" aria-label="add" className={classes.fab} onClick={() => history.push('/cadastro-veiculo')}>
         <AddIcon />
