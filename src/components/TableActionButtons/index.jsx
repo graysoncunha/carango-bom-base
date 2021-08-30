@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { IconButton, makeStyles } from '@material-ui/core'
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded'
 import EditRoundedIcon from '@material-ui/icons/EditRounded'
@@ -27,6 +28,12 @@ function TableActionButtons({ row, onClickDelete, onClickEdit }) {
       </IconButton>
     </div>
   )
+}
+
+TableActionButtons.propTypes = {
+  row: PropTypes.object.isRequired,
+  onClickDelete: PropTypes.func,
+  onClickEdit: PropTypes.func,
 }
 
 export default TableActionButtons
