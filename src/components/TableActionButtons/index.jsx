@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IconButton, makeStyles } from '@material-ui/core'
+import { Tooltip, IconButton, makeStyles } from '@material-ui/core'
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded'
 import EditRoundedIcon from '@material-ui/icons/EditRounded'
 
@@ -15,17 +15,26 @@ function TableActionButtons({ row, onClickDelete, onClickEdit }) {
 
   return (
     <div>
-      <IconButton
-        aria-label="delete"
-        className={classes.iconButton}
-        onClick={() => onClickDelete(row)}
-        data-testid={`deleteButton${row.id}`}
-      >
-        <DeleteOutlineRoundedIcon />
-      </IconButton>
-      <IconButton aria-label="edit" className={classes.iconButton} onClick={() => onClickEdit(row)}>
-        <EditRoundedIcon />
-      </IconButton>
+      <Tooltip title="Excluir">
+        <IconButton
+          aria-label="delete"
+          className={classes.iconButton}
+          onClick={() => onClickDelete(row)}
+          data-testid={`deleteButton${row.id}`}
+        >
+          <DeleteOutlineRoundedIcon />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Editar">
+        <IconButton
+          aria-label="edit"
+          data-testid={`editButton${row.id}`}
+          className={classes.iconButton}
+          onClick={() => onClickEdit(row)}
+        >
+          <EditRoundedIcon />
+        </IconButton>
+      </Tooltip>
     </div>
   )
 }

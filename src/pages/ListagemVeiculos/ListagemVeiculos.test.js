@@ -42,6 +42,26 @@ describe('Componente Listagem de Veículos', () => {
       const text = await screen.findByText(veiculoMock[0].marca.nome)
       expect(text).toBeInTheDocument()
     })
+    it('Deve renderizar os botões de excluir', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
+      expect(botaoDeletarVeiculo).toBeVisible()
+    })
+    it('Deve renderizar os botões de editar', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoEditarVeiculo = await screen.findByTestId(`editButton${veiculoMock[0].id}`)
+      expect(botaoEditarVeiculo).toBeVisible()
+    })
     it('Deve excluir veículo cadastrado', async () => {
       VeiculoService.excluir.mockImplementation((x) => x === veiculoMock[0].id && '200')
       render(
