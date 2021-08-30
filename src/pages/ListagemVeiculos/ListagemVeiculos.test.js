@@ -1,6 +1,7 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import ListagemVeiculos from './index'
+import TableActionButtons from '../../components/TableActionButtons'
 import VeiculoService from '../../services/VeiculoService'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
@@ -42,24 +43,18 @@ describe('Componente Listagem de Veículos', () => {
       const text = await screen.findByText(veiculoMock[0].marca.nome)
       expect(text).toBeInTheDocument()
     })
-    it('Deve renderizar os botões de excluir', async () => {
+    it('Deve renderizar os botões de excluir e editar', async () => {
       render(
         <Router history={history}>
-          <ListagemVeiculos />
+          <TableActionButtons row={veiculoMock[0]} onClickDelete={() => {}} onClickEdit={() => {}} />
         </Router>
       )
 
       const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
-      expect(botaoDeletarVeiculo).toBeVisible()
-    })
-    it('Deve renderizar os botões de editar', async () => {
-      render(
-        <Router history={history}>
-          <ListagemVeiculos />
-        </Router>
-      )
-
       const botaoEditarVeiculo = await screen.findByTestId(`editButton${veiculoMock[0].id}`)
+      fireEvent.click(botaoDeletarVeiculo)
+      fireEvent.click(botaoEditarVeiculo)
+      expect(botaoDeletarVeiculo).toBeVisible()
       expect(botaoEditarVeiculo).toBeVisible()
     })
     it('Deve excluir veículo cadastrado', async () => {
