@@ -9,7 +9,7 @@ import CustomPagination from '../../components/CustomPagination'
 import TableActionButtons from '../../components/TableActionButtons'
 
 import { formatCurrency } from '../../utils'
-import useStyles from './styles'
+import useStyles from './useStyles'
 
 function ListagemVeiculos() {
   const [veiculos, setVeiculos] = useState([])
