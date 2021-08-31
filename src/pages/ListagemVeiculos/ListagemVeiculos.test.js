@@ -1,7 +1,6 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import ListagemVeiculos from './index'
-import TableActionButtons from '../../components/TableActionButtons'
 import VeiculoService from '../../services/VeiculoService'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
@@ -43,20 +42,6 @@ describe('Componente Listagem de Veículos', () => {
       const text = await screen.findByText(veiculoMock[0].marca.nome)
       expect(text).toBeInTheDocument()
     })
-    it('Deve renderizar os botões de excluir e editar', async () => {
-      render(
-        <Router history={history}>
-          <TableActionButtons row={veiculoMock[0]} onClickDelete={() => {}} onClickEdit={() => {}} />
-        </Router>
-      )
-
-      const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
-      const botaoEditarVeiculo = await screen.findByTestId(`editButton${veiculoMock[0].id}`)
-      fireEvent.click(botaoDeletarVeiculo)
-      fireEvent.click(botaoEditarVeiculo)
-      expect(botaoDeletarVeiculo).toBeVisible()
-      expect(botaoEditarVeiculo).toBeVisible()
-    })
     it('Deve excluir veículo cadastrado', async () => {
       VeiculoService.excluir.mockImplementation((x) => x === veiculoMock[0].id && '200')
       render(
@@ -68,6 +53,18 @@ describe('Componente Listagem de Veículos', () => {
       const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
       fireEvent.click(botaoDeletarVeiculo)
       expect(await screen.findByText(veiculoMock[0].modelo)).not.toBeInTheDocument()
+    })
+    it('Deve ir para a página de cadastro de veículo', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoCadastro = await screen.findByLabelText('add')
+      expect(botaoCadastro).toBeVisible()
+      fireEvent.click(botaoCadastro)
+      expect(history.location.pathname).toBe('/cadastro-veiculo')
     })
   })
   describe('Com as requests sendo rejeitadas', () => {
