@@ -47,11 +47,11 @@ function CadastroMarca() {
         event.preventDefault()
         if (possoEnviar()) {
           if (id) {
-            MarcaService.alterar({ id, nome: marca }).then((res) => {
+            MarcaService.alterar({ id, nome: marca }).then(() => {
               history.goBack()
             })
           } else {
-            MarcaService.cadastrar({ nome: marca }).then((res) => {
+            MarcaService.cadastrar({ nome: marca }).then(() => {
               setMarca('')
               history.goBack()
             })

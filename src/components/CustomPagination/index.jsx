@@ -4,7 +4,7 @@ import PaginationItem from '@material-ui/lab/PaginationItem'
 import { useGridSlotComponentProps } from '@material-ui/data-grid'
 import { makeStyles } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     '& .MuiPaginationItem-page.Mui-selected': {
       backgroundColor: 'rgba(109,70,228, 0.08)',

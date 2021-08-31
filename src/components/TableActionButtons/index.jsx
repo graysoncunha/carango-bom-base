@@ -4,7 +4,7 @@ import { Tooltip, IconButton, makeStyles } from '@material-ui/core'
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded'
 import EditRoundedIcon from '@material-ui/icons/EditRounded'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   iconButton: {
     color: 'rgb(0 0 0 / 25%)',
     padding: 5,

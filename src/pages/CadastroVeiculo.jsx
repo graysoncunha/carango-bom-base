@@ -90,11 +90,11 @@ function CadastroVeiculo() {
 
         if (possoEnviar()) {
           if (id) {
-            VeiculoService.alterar({ id, ...veiculo }).then((res) => {
+            VeiculoService.alterar({ id, ...veiculo }).then(() => {
               history.goBack()
             })
           } else {
-            VeiculoService.cadastrar({ ...veiculo }).then((res) => {
+            VeiculoService.cadastrar({ ...veiculo }).then(() => {
               setVeiculo({
                 marca: '',
                 modelo: '',
