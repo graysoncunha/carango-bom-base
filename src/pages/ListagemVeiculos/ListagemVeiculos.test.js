@@ -2,7 +2,7 @@ import React from 'react'
 import { Router } from 'react-router-dom'
 import ListagemVeiculos from './index'
 import VeiculoService from '../../services/VeiculoService'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 
 const veiculoMock = [
@@ -42,11 +42,49 @@ describe('Componente Listagem de Veículos', () => {
       const text = await screen.findByText(veiculoMock[0].marca.nome)
       expect(text).toBeInTheDocument()
     })
+    it('Deve excluir veículo cadastrado', async () => {
+      VeiculoService.excluir.mockImplementation((x) => x === veiculoMock[0].id && '200')
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
+      fireEvent.click(botaoDeletarVeiculo)
+      expect(await screen.findByText(veiculoMock[0].modelo)).not.toBeInTheDocument()
+    })
+    it('Deve ir para a página de cadastro de veículo', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoCadastro = await screen.findByLabelText('add')
+      expect(botaoCadastro).toBeVisible()
+      fireEvent.click(botaoCadastro)
+      expect(history.location.pathname).toBe('/cadastro-veiculo')
+    })
   })
-  // describe('Com as requests sendo rejeitadas', () => {
-  //   it('Deve renderizar uma mensagem de erro ao tentar carregar a lista de veículos', async () => {
-  //     VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao carregar os itens'))
-  //     expect(await screen.findByText(/houve um erro ao carregar os itens/i)).toBeInTheDocument()
-  //   })
-  // })
+  describe('Com as requests sendo rejeitadas', () => {
+    it('Deve renderizar uma mensagem de erro ao tentar carregar a lista de veículos', async () => {
+      VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao carregar os itens'))
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+      expect(await screen.findByText(/houve um erro ao carregar os itens/i)).toBeInTheDocument()
+    })
+    it('Deve renderizar uma mensagem de erro ao tentar excluir um veículo', async () => {
+      VeiculoService.listar.mockRejectedValue(new Error('Houve um erro ao excluir o item'))
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+      expect(await screen.findByText(/houve um erro ao excluir o item/i)).toBeInTheDocument()
+    })
+  })
 })

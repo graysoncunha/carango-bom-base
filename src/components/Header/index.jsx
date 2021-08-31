@@ -9,7 +9,7 @@ import headerLinks from './links.json'
 function Header() {
   const useStyles = makeStyles(() => ({
     headerStyle: {
-      backgroundColor: '#400CCC',
+      backgroundColor: '#6d47e4',
       paddingRight: '79px',
       paddingLeft: '118px',
     },
