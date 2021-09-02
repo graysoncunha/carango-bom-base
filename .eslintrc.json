@@ -5,7 +5,8 @@
     "jest": true
   },
   "globals": {
-    "process": true
+    "process": true,
+    "module": true
   },
   "extends": ["plugin:react/recommended", "eslint:recommended", "prettier"],
   "parserOptions": {
