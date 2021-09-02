@@ -14,7 +14,7 @@ const VeiculoService = {
   },
 
   consultar(id) {
-    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`).then((r) => r.json())
+    return fetch(`https://carango-bom-api-grupo1.herokuapp.com/veiculos/${id}`).then((r) => r.json())
   },
 
   listar() {

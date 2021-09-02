@@ -28,6 +28,11 @@ function ListagemVeiculos() {
     }
   }
 
+  const onClickEdit = async (row) => {
+    console.log({ row })
+    history.push('/alteracao-veiculo/:id', { id: row.id })
+  }
+
   const colunas = useMemo(() => {
     return [
       { field: 'modelo', headerName: 'Modelo', flex: 3 },
@@ -38,7 +43,9 @@ function ListagemVeiculos() {
         field: '',
         sortable: false,
         flex: 1,
-        renderCell: (params) => <TableActionButtons row={params.row} onClickDelete={onClickDelete} />,
+        renderCell: (params) => (
+          <TableActionButtons row={params.row} onClickDelete={onClickDelete} onClickEdit={onClickEdit} />
+        ),
       },
     ]
   }, [])
