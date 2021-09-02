@@ -26,4 +26,5 @@ class LocalStorageMock {
   }
 }
 
+// eslint-disable-next-line
 global.localStorage = new LocalStorageMock()
