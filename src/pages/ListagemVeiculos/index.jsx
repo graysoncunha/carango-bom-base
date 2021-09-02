@@ -29,7 +29,6 @@ function ListagemVeiculos() {
   }
 
   const onClickEdit = async (row) => {
-    console.log({ row })
     history.push('/alteracao-veiculo/:id', { id: row.id })
   }
 
