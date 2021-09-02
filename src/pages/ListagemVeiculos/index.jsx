@@ -29,7 +29,7 @@ function ListagemVeiculos() {
   }
 
   const onClickEdit = async (row) => {
-    history.push('/alteracao-veiculo/:id', { id: row.id })
+    history.push(`/alteracao-veiculo/${row.id}`)
   }
 
   const colunas = useMemo(() => {
