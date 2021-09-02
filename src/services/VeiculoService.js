@@ -1,48 +1,26 @@
+import api from '../api/request'
+
+const urlVeiculos = '/veiculos'
+
 const VeiculoService = {
-  cadastrar(veiculo) {
-    return fetch('https://carango-bom-api.herokuapp.com/veiculos', {
-      method: 'POST',
-      body: JSON.stringify(veiculo),
-    }).then((r) => r.json())
+  async cadastrar(veiculo) {
+    return await api(urlVeiculos, { method: 'POST', body: veiculo })
   },
 
-  alterar(veiculo) {
-    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${veiculo.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(veiculo),
-    }).then((r) => r.json())
+  async alterar(veiculo) {
+    return await api(`${urlVeiculos}/${veiculo.id}`, { method: 'PUT', body: veiculo })
   },
 
-  consultar(id) {
-    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`).then((r) => r.json())
+  async consultar(id) {
+    return await api(`${urlVeiculos}/${id}`)
   },
 
-  listar() {
-    return fetch('https://carango-bom-api.herokuapp.com/veiculos')
-      .then((r) => {
-        if (!r.ok) {
-          throw new Error('Ocorreu um erro ao listar os veículos.')
-        }
-        return r.json()
-      })
-      .catch((erro) => {
-        throw new Error(erro)
-      })
+  async listar() {
+    return await api(urlVeiculos)
   },
 
-  excluir(id) {
-    return fetch(`https://carango-bom-api.herokuapp.com/veiculos/${id}`, {
-      method: 'DELETE',
-    })
-      .then((r) => {
-        if (!r.ok) {
-          throw new Error('Ocorreu um erro ao excluir o veículo.')
-        }
-        return r.json()
-      })
-      .catch((erro) => {
-        throw new Error(erro)
-      })
+  async excluir(id) {
+    return await api(`${urlVeiculos}/${id}`, { method: 'DELETE' })
   },
 }
 

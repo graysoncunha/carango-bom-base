@@ -1,32 +1,27 @@
+import api from '../api/request'
+
+const urlMarcas = '/marcas'
+
 const MarcaService = {
-  cadastrar (marca) {
-    return fetch('https://carango-bom-api.herokuapp.com/marcas', {
-      method: 'POST',
-      body: JSON.stringify(marca)
-    }).then(r => r.json())
+  async cadastrar(marca) {
+    return await api(urlMarcas, { method: 'POST', body: marca })
   },
 
-  alterar (marca) {
-    return fetch('https://carango-bom-api.herokuapp.com/marcas/' + marca.id, {
-      method: 'PUT',
-      body: JSON.stringify(marca)
-    }).then(r => r.json())
+  async alterar(marca) {
+    return await api(`${urlMarcas}/${marca.id}`, { method: 'PUT', body: marca })
   },
 
-  consultar (id) {
-    return fetch('https://carango-bom-api.herokuapp.com/marcas/' + id).then(r => r.json())
+  async consultar(id) {
+    return await api(`${urlMarcas}/${id}`)
   },
 
-  listar () {
-    return fetch('https://carango-bom-api.herokuapp.com/marcas').then(r => r.json())
+  async listar() {
+    return await api(urlMarcas)
   },
 
-  excluir (marca) {
-    return fetch('https://carango-bom-api.herokuapp.com/marcas/' + marca.id, {
-      method: 'DELETE'
-    })
-      .then(r => r.json())
-  }
+  async excluir(id) {
+    return await api(`${urlMarcas}/${id}`, { method: 'DELETE' })
+  },
 }
 
 export default MarcaService
