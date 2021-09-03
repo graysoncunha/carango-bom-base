@@ -10,7 +10,7 @@ import TableActionButtons from '../../components/TableActionButtons'
 
 import useStyles from './useStyles'
 
-function Table({ service, colunas, formatar, caminhoCadastro }) {
+function Table({ service, colunas, formatar, caminhoCadastro, caminhoAlteracao }) {
   const [itens, setItens] = useState([])
   const [{ status, error }, setStatus] = useState({ status: 'idle', error: null })
   const classes = useStyles()
@@ -31,13 +31,20 @@ function Table({ service, colunas, formatar, caminhoCadastro }) {
     }
   }
 
+  const onClickEdit = (row) => {
+    history.push(`${caminhoAlteracao}/${row.id}`)
+  }
+
   const colunasMemo = useMemo(() => {
     return [
       ...colunas,
       {
         field: '',
         sortable: false,
-        renderCell: (params) => <TableActionButtons row={params.row} onClickDelete={onClickDelete} />,
+        flex: 1,
+        renderCell: (params) => (
+          <TableActionButtons row={params.row} onClickDelete={onClickDelete} onClickEdit={onClickEdit} />
+        ),
       },
     ]
   }, [colunas])
@@ -91,5 +98,6 @@ Table.propTypes = {
   colunas: PropTypes.array.isRequired,
   formatar: PropTypes.func.isRequired,
   caminhoCadastro: PropTypes.string.isRequired,
+  caminhoAlteracao: PropTypes.string.isRequired,
 }
 export default Table
