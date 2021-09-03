@@ -4,8 +4,8 @@ on:
     branches:
       - main
 jobs:
-  build:
-    name: Run ESLint
+  install:
+    name: install
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
@@ -18,21 +18,29 @@ jobs:
 
       - name: Install dependencies
         run: npm i
-
+  eslint:
+    name: run ESlint
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
       - name: Run Eslint
-        needs: Install dependencies
         run: npm run lint
-
+  build:
+    name: build
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
       - name: Build project
-        needs: Install dependencies
         run: npm run build
-
+  analyze:
+    name: analyze
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Test
-        needs: Build project
         run: npm run test
 
       - name: Lighthouse
-        needs: Build project
         run: |
           npm install -g @lhci/cli@0.6.x
           lhci autorun
