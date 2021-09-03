@@ -66,6 +66,18 @@ describe('Componente Listagem de Veículos', () => {
       fireEvent.click(botaoCadastro)
       expect(history.location.pathname).toBe('/cadastro-veiculo')
     })
+    it('Deve ir para a página de editar veículo', async () => {
+      render(
+        <Router history={history}>
+          <ListagemVeiculos />
+        </Router>
+      )
+
+      const botaoEditar = await screen.findByTestId(`editButton${veiculoMock[0].id}`)
+      expect(botaoEditar).toBeVisible()
+      fireEvent.click(botaoEditar)
+      expect(history.location.pathname).toBe(`/alteracao-veiculo/${veiculoMock[0].id}`)
+    })
   })
   describe('Com as requests sendo rejeitadas', () => {
     it('Deve renderizar uma mensagem de erro ao tentar carregar a lista de veículos', async () => {
