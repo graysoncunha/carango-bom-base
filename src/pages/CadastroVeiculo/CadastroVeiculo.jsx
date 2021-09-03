@@ -74,7 +74,6 @@ function CadastroVeiculo() {
 
   useEffect(async () => {
     if (id) {
-      console.log(id)
       const veiculoSelecionado = await VeiculoService.consultar(id)
 
       setVeiculo({
@@ -157,6 +156,7 @@ function CadastroVeiculo() {
         </TextField>
 
         <TextField
+          data-testid="modelo-input"
           value={veiculo.modelo}
           onChange={(evt) =>
             setVeiculo((prevState) => ({

@@ -1,7 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
-import ListagemVeiculos from '../ListagemVeiculos/ListagemVeiculos'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { BrowserRouter, MemoryRouter, Route } from 'react-router-dom'
 import VeiculoService from '../../services/VeiculoService'
 import CadastroVeiculo from './CadastroVeiculo'
 import { Router } from 'react-router-dom'
@@ -20,6 +19,18 @@ const veiculoMock = [
 jest.mock('../../services/VeiculoService')
 
 const history = createMemoryHistory()
+
+const renderWithRouter = (ui, { route = '/', path = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route)
+  return {
+    ...render(
+      <BrowserRouter>
+        <Route path={path} component={ui} />
+      </BrowserRouter>
+    ),
+  }
+}
+
 describe('Componente de cadastro de veículos', () => {
   beforeEach(async () => {
     jest.clearAllMocks()
@@ -31,26 +42,59 @@ describe('Componente de cadastro de veículos', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('deve carregar a página de alteração de veículo', async () => {
+  it('deve carregar a página de cadastro de veículo', async () => {
     render(
       <Router history={history}>
-        <ListagemVeiculos />
+        <CadastroVeiculo />
       </Router>
     )
 
-    const botaoEditarVeiculo = await screen.findByTestId(`editButton${veiculoMock[0].id}`)
-    fireEvent.click(botaoEditarVeiculo)
-    expect(history.location.pathname).toBe(`/alteracao-veiculo/${veiculoMock[0].id}`)
+    const botaoCadastrar = await screen.findByText('Cadastrar')
+    expect(botaoCadastrar).toBeInTheDocument()
   })
 
-  // TODO: Ver se a função submit foi chamada com o clique do botão
-  //   it('quando o formulário é enviado, chama a função de cadastrar', () => {
-  //     const funcaoRealizarTransacao = jest.fn()
+  it('deve carregar a página de alteração de veículo', async () => {
+    VeiculoService.consultar.mockResolvedValue(veiculoMock[0])
+    renderWithRouter(CadastroVeiculo, {
+      route: `/alteracao-veiculo/${veiculoMock[0].id}`,
+      path: '/alteracao-veiculo/:id',
+    })
+    const botaoAlterar = await screen.findByText('Alterar')
+    expect(botaoAlterar).toBeInTheDocument()
+  })
 
-  //     render(<Conta saldo={1000} realizarTransacao={funcaoRealizarTransacao} />)
+  it('deve clicar no cancelar da página de alteração de veículo', async () => {
+    VeiculoService.consultar.mockResolvedValue(veiculoMock[0])
+    renderWithRouter(CadastroVeiculo, {
+      route: `/alteracao-veiculo/${veiculoMock[0].id}`,
+      path: '/alteracao-veiculo/:id',
+    })
+    const botaoCancelar = await screen.findByText('Cancelar')
+    expect(botaoCancelar).toBeInTheDocument()
+    fireEvent.click(botaoCancelar)
+    expect(history.location.pathname).toBe('/')
+  })
 
-  //     fireEvent.click(screen.getByText('Realizar operação'))
+  it('quando o formulário é enviado, os campso devem ser validados', () => {
+    render(<CadastroVeiculo />, { wrapper: MemoryRouter })
 
-  //     expect(funcaoRealizarTransacao).toHaveBeenCalled()
-  //   })
+    fireEvent.click(screen.getByText('Cadastrar'))
+
+    waitFor(() => expect(screen.getByText('Marca é obrigatória.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Modelo deve ter ao menos 2 caracteres.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Ano deve ter ao menos 4 caracteres.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Valor é obrigatório.')).toBeInTheDocument())
+  })
+
+  it('deve alterar os campos do formulário', async () => {
+    VeiculoService.consultar.mockResolvedValue(veiculoMock[0])
+    renderWithRouter(CadastroVeiculo, { route: `/alteracao-marca/${veiculoMock[0].id}`, path: '/alteracao-marca/:id' })
+
+    const inputModelo = await screen.findByDisplayValue(veiculoMock[0].modelo)
+    const inputAno = await screen.findByDisplayValue(veiculoMock[0].ano)
+    fireEvent.change(inputModelo, { target: { value: 'corolla' } })
+    fireEvent.change(inputAno, { target: { value: '2001' } })
+    expect(inputModelo.value).toBe('corolla')
+    expect(inputAno.value).toBe('2001')
+  })
 })
