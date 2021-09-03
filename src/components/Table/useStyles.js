@@ -1,10 +1,16 @@
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
+  pageContainer: {
+    height: '400px',
+    width: '100%',
+    marginTop: '100px',
+  },
   fab: {
     position: 'absolute',
     bottom: '100px',
     right: '100px',
+    backgroundColor: '#6d47e4',
   },
   actionsToolbar: {
     float: 'right',
@@ -38,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
     '& .MuiDataGrid-columnsContainer': {
-      backgroundColor: '#f3f2f2',
+      backgroundColor: '#ece9e9',
       boxShadow: '0 8px 12px -8px #dedede',
       color: '#6d47e4',
       fontSize: '14px',
