@@ -156,6 +156,7 @@ function CadastroVeiculo() {
         </TextField>
 
         <TextField
+          data-testid="modelo-input"
           value={veiculo.modelo}
           onChange={(evt) =>
             setVeiculo((prevState) => ({

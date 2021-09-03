@@ -72,6 +72,7 @@ exports[`Componente de cadastro de veículos deve carregar a página de cadastro
     </div>
     <div
       class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+      data-testid="modelo-input"
     >
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
