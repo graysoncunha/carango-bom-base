@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1630672972642" clover="3.2.0">
-  <project timestamp="1630672972642" name="All files">
+<coverage generated="1630675676402" clover="3.2.0">
+  <project timestamp="1630675676402" name="All files">
     <metrics statements="191" coveredstatements="98" conditionals="53" coveredconditionals="12" methods="80" coveredmethods="40" elements="324" coveredelements="150" complexity="0" loc="191" ncloc="191" packages="14" files="19" classes="19"/>
     <package name="src">
       <metrics statements="15" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
@@ -36,8 +36,8 @@
       <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="request.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/api/request.js">
         <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="1" count="5" type="stmt"/>
-        <line num="3" count="5" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
         <line num="12" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
