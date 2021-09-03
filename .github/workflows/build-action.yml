@@ -55,8 +55,12 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Run build
         run: npm run build
-  analyze:
-    name: analyze
+        - name: Lighthouse
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun
+  tests:
+    name: tests
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +75,3 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Test
         run: npm run test
-      - name: Lighthouse
-        run: |
-          npm install -g @lhci/cli@0.6.x
-          lhci autorun
