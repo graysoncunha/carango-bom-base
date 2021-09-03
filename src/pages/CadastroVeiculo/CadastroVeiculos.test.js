@@ -1,43 +1,23 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import CadastroVeiculo from './CadastroVeiculo'
-import VeiculoService from '../../services/VeiculoService'
-// import { Router } from 'react-router-dom'
-// import { createMemoryHistory } from 'history'
+import Routes from '../../routes'
 
-const veiculoMock = [
-  {
-    id: 1,
-    modelo: 'Sandero',
-    ano: 2022,
-    marca: { id: 2, nome: 'Renault' },
-    valor: '80000',
-  },
-]
-
-jest.mock('../../services/VeiculoService')
-// const history = createMemoryHistory()
 describe('Componente de cadastro de veículos', () => {
-  beforeEach(async () => {
-    jest.clearAllMocks()
-    VeiculoService.listar.mockResolvedValue(veiculoMock)
-  })
   it('deve carregar a página de cadastro de veículo', () => {
     const { container } = render(<CadastroVeiculo />, { wrapper: MemoryRouter })
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  // it('deve carregar a página de alteração de veículo', async () => {
+  // it('deve carregar a página de alteração de veículo', () => {
   //   render(
-  //     <Router history={history}>
+  //     <Routes path="/alteracao-veiculo/:id">
   //       <CadastroVeiculo />
-  //     </Router>
+  //     </Routes>,
+  //     { route: '/alteracao-veiculo/139' }
   //   )
-
-  //   const botaoDeletarVeiculo = await screen.findByTestId(`deleteButton${veiculoMock[0].id}`)
-  //   fireEvent.click(botaoDeletarVeiculo)
 
   //   expect(screen.getByText('Alterar')).toBeInTheDocument()
   // })
