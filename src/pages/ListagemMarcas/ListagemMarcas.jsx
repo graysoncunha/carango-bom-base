@@ -12,7 +12,15 @@ function ListagemMarcas() {
     }))
   }
 
-  return <Table service={MarcaService} colunas={colunas} formatar={formatarMarcas} caminhoCadastro="/cadastro-marca" />
+  return (
+    <Table
+      service={MarcaService}
+      colunas={colunas}
+      formatar={formatarMarcas}
+      caminhoCadastro="/cadastro-marca"
+      caminhoAlteracao="/alteracao-marca"
+    />
+  )
 }
 
 export default ListagemMarcas
