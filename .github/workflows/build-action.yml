@@ -4,26 +4,74 @@ on:
     branches:
       - main
 jobs:
-  build:
-    name: Run ESLint
+  install:
+    name: install
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm i
-
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-${{ env.cache-name }}-
+            ${{ runner.os }}-node_modules-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        run: npm install
+  eslint:
+    name: run ESlint
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Load node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Run Eslint
         run: npm run lint
-
-      - name: Build project
+  build:
+    name: build
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Load node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      - name: Run build
         run: npm run build
-
+      - name: Lighthouse
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun
+  tests:
+    name: tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Load node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Test
         run: npm run test
