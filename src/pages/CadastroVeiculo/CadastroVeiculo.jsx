@@ -74,6 +74,7 @@ function CadastroVeiculo() {
 
   useEffect(async () => {
     if (id) {
+      console.log(id)
       const veiculoSelecionado = await VeiculoService.consultar(id)
 
       setVeiculo({
