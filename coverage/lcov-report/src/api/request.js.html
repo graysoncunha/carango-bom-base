@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/services/VeiculoService.js</title>
+    <title>Code coverage report for src/api/request.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/services</a> VeiculoService.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/api</a> request.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>8/12</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">57.14% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -84,60 +84,75 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import api from '../api/request'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const apiUrl = process.env.REACT_APP_API_URL
 &nbsp;
-const urlVeiculos = '/veiculos'
-&nbsp;
-const VeiculoService = {
-<span class="fstat-no" title="function not covered" >  as</span>ync cadastrar(veiculo) {
-<span class="cstat-no" title="statement not covered" >    return await api(urlVeiculos, { method: 'POST', body: veiculo })</span>
-  },
-&nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync alterar(veiculo) {
-<span class="cstat-no" title="statement not covered" >    return await api(`${urlVeiculos}/${veiculo.id}`, { method: 'PUT', body: veiculo })</span>
-  },
-&nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync consultar(id) {
-<span class="cstat-no" title="statement not covered" >    return await api(`${urlVeiculos}/${id}`)</span>
-  },
-&nbsp;
-  async listar() {
-    return await api(urlVeiculos)
-  },
-&nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync excluir(id) {
-<span class="cstat-no" title="statement not covered" >    return await api(`${urlVeiculos}/${id}`, { method: 'DELETE' })</span>
-  },
+export const defaultHeaders = {
+  'Content-Type': 'application/json',
 }
 &nbsp;
-export default VeiculoService
+async function request(endpoint, { body, ...customConfig } = {}) {
+  const config = {
+    method: customConfig.method || 'GET',
+    headers: defaultHeaders,
+  }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (body) {
+<span class="cstat-no" title="statement not covered" >    config.body = JSON.stringify(body)</span>
+  }
+  const response = await fetch(`${apiUrl}${endpoint}`, config)
+<span class="cstat-no" title="statement not covered" >  if (!response.ok) {</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error(await handleError(response))</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return response.json()</span>
+}
+&nbsp;
+export async function handleError(response) {
+  // TO-DO: if it's 403, then logout
+&nbsp;
+  const errorMessage = await response.text()
+  const parsedMessage = JSON.parse(errorMessage)
+&nbsp;
+  return parsedMessage.message
+}
+&nbsp;
+export default request
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

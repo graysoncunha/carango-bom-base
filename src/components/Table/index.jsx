@@ -1,18 +1,17 @@
 import React, { useEffect, useState, useMemo } from 'react'
+import PropTypes from 'prop-types'
 import { Fab } from '@material-ui/core'
 import { useHistory } from 'react-router'
 import Alert from '@material-ui/lab/Alert'
 import { DataGrid } from '@material-ui/data-grid'
 import AddIcon from '@material-ui/icons/Add'
-import VeiculoService from '../../services/VeiculoService'
 import CustomPagination from '../../components/CustomPagination'
 import TableActionButtons from '../../components/TableActionButtons'
 
-import { formatCurrency } from '../../utils'
 import useStyles from './useStyles'
 
-function ListagemVeiculos() {
-  const [veiculos, setVeiculos] = useState([])
+function Table({ service, colunas, formatar, caminhoCadastro }) {
+  const [itens, setItens] = useState([])
   const [{ status, error }, setStatus] = useState({ status: 'idle', error: null })
   const classes = useStyles()
   const history = useHistory()
@@ -20,8 +19,12 @@ function ListagemVeiculos() {
   const onClickDelete = async (row) => {
     try {
       setStatus({ status: 'loading' })
-      await VeiculoService.excluir(row.id)
-      setVeiculos(veiculos.filter((veiculo) => veiculo.id !== row.id))
+      await service.excluir(row.id)
+      setItens((prevState) =>
+        prevState.filter((item) => {
+          return item.id !== row.id
+        })
+      )
       setStatus({ status: 'fulfilled' })
     } catch (e) {
       setStatus({ status: 'rejected', error: e.message })
@@ -32,12 +35,9 @@ function ListagemVeiculos() {
     history.push(`/alteracao-veiculo/${row.id}`)
   }
 
-  const colunas = useMemo(() => {
+  const colunasMemo = useMemo(() => {
     return [
-      { field: 'modelo', headerName: 'Modelo', flex: 3 },
-      { field: 'ano', headerName: 'Ano', flex: 2 },
-      { field: 'marca', headerName: 'Marca', flex: 2 },
-      { field: 'valor', headerName: 'Valor (R$)', flex: 2 },
+      ...colunas,
       {
         field: '',
         sortable: false,
@@ -47,36 +47,26 @@ function ListagemVeiculos() {
         ),
       },
     ]
-  }, [])
+  }, [colunas])
 
   useEffect(() => {
-    const carregarDadosVeiculo = async () => {
-      let listaVeiculos
+    const carregarDados = async () => {
+      let listaItens
       try {
         setStatus({ status: 'loading' })
-        listaVeiculos = await VeiculoService.listar()
-        const listaVeiculosFormatada = formatarVeiculos(listaVeiculos)
-        setVeiculos(listaVeiculosFormatada)
+        listaItens = await service.listar()
+        const listaItensFormatada = formatar(listaItens)
+        setItens(listaItensFormatada)
         setStatus({ status: 'fulfilled' })
       } catch (e) {
         setStatus({ status: 'rejected', error: e.message })
       }
     }
-    carregarDadosVeiculo()
+    carregarDados()
   }, [])
 
-  const formatarVeiculos = (listaVeiculos) => {
-    return listaVeiculos.map((veiculo) => ({
-      id: veiculo.id,
-      modelo: veiculo.modelo,
-      ano: veiculo.ano,
-      marca: veiculo.marca.nome,
-      valor: formatCurrency(veiculo.valor),
-    }))
-  }
-
   return (
-    <div style={{ height: '400px', width: '100%' }}>
+    <div className={classes.pageContainer}>
       {status === 'rejected' ? (
         <Alert severity="error" className={classes.alert}>
           {error}
@@ -84,8 +74,8 @@ function ListagemVeiculos() {
       ) : null}
       <DataGrid
         className={classes.root}
-        rows={veiculos}
-        columns={colunas}
+        rows={itens}
+        columns={colunasMemo}
         rowsPerPageOptions={[5]}
         pageSize={5}
         disableSelectionOnClick
@@ -96,11 +86,17 @@ function ListagemVeiculos() {
         }}
       />
 
-      <Fab color="primary" aria-label="add" className={classes.fab} onClick={() => history.push('/cadastro-veiculo')}>
+      <Fab color="primary" aria-label="add" className={classes.fab} onClick={() => history.push(caminhoCadastro)}>
         <AddIcon />
       </Fab>
     </div>
   )
 }
 
-export default ListagemVeiculos
+Table.propTypes = {
+  service: PropTypes.object.isRequired,
+  colunas: PropTypes.array.isRequired,
+  formatar: PropTypes.func.isRequired,
+  caminhoCadastro: PropTypes.string.isRequired,
+}
+export default Table

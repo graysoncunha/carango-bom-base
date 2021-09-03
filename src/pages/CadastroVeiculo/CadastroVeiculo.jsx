@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import { Button, TextField, MenuItem, makeStyles } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
-import useErros from '../hooks/useErros'
-import VeiculoService from '../services/VeiculoService'
-import MarcaService from '../services/MarcaService'
+import useErros from '../../hooks/useErros'
+import VeiculoService from '../../services/VeiculoService'
+import MarcaService from '../../services/MarcaService'
 
 const useStyles = makeStyles((theme) => ({
   actions: {
@@ -68,19 +68,19 @@ function CadastroVeiculo() {
   const [erros, validarCampos, possoEnviar] = useErros(validacoes)
 
   useEffect(async () => {
-    const marcas = await MarcaService.listar()
-    setMarcas(marcas)
+    const marcasLista = await MarcaService.listar()
+    setMarcas(marcasLista)
   }, [])
 
   useEffect(async () => {
     if (id) {
-      const veiculo = await VeiculoService.consultar(id)
+      const veiculoSelecionado = await VeiculoService.consultar(id)
 
       setVeiculo({
-        marcaId: veiculo.marca.id,
-        modelo: veiculo.modelo,
-        ano: veiculo.ano,
-        valor: veiculo.valor,
+        marcaId: veiculoSelecionado.marca.id,
+        modelo: veiculoSelecionado.modelo,
+        ano: veiculoSelecionado.ano,
+        valor: veiculoSelecionado.valor,
       })
     }
   }, [id])
@@ -148,9 +148,9 @@ function CadastroVeiculo() {
           margin="normal"
         >
           {marcas &&
-            marcas.map(({ id, nome }) => (
-              <MenuItem key={id} value={id}>
-                {nome}
+            marcas.map((marca) => (
+              <MenuItem key={marca.id} value={marca.id}>
+                {marca.nome}
               </MenuItem>
             ))}
         </TextField>
