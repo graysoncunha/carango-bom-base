@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
   build:
     name: build
-    needs: install
+    needs: eslint
     runs-on: ubuntu-latest
     steps:
       - name: Build project
