@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1630683406092" clover="3.2.0">
-  <project timestamp="1630683406092" name="All files">
-    <metrics statements="194" coveredstatements="111" conditionals="53" coveredconditionals="14" methods="81" coveredmethods="45" elements="328" coveredelements="170" complexity="0" loc="194" ncloc="194" packages="14" files="19" classes="19"/>
+<coverage generated="1630689975748" clover="3.2.0">
+  <project timestamp="1630689975748" name="All files">
+    <metrics statements="193" coveredstatements="138" conditionals="53" coveredconditionals="23" methods="81" coveredmethods="57" elements="327" coveredelements="218" complexity="0" loc="193" ncloc="193" packages="14" files="19" classes="19"/>
     <package name="src">
       <metrics statements="15" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="2"/>
-      <file name="App.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/App.js">
+      <file name="App.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/App.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="10" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
       </file>
-      <file name="Constants.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/Constants.js">
+      <file name="Constants.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/Constants.js">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
       </file>
-      <file name="index.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/index.js">
+      <file name="index.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/index.js">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
       </file>
-      <file name="reportWebVitals.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/reportWebVitals.js">
+      <file name="reportWebVitals.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/reportWebVitals.js">
         <metrics statements="8" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="cond" truecount="0" falsecount="4"/>
@@ -34,14 +34,14 @@
     </package>
     <package name="src.api">
       <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="2" coveredmethods="2"/>
-      <file name="request.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/api/request.js">
+      <file name="request.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/api/request.js">
         <metrics statements="12" coveredstatements="8" conditionals="7" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="1" count="6" type="stmt"/>
-        <line num="3" count="6" type="stmt"/>
-        <line num="8" count="5" type="stmt"/>
-        <line num="12" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="3" count="7" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
         <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -52,7 +52,7 @@
     </package>
     <package name="src.components.CustomPagination">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <file name="index.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/components/CustomPagination/index.jsx">
+      <file name="index.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/components/CustomPagination/index.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="7" count="14" type="stmt"/>
         <line num="16" count="86" type="stmt"/>
@@ -64,7 +64,7 @@
     </package>
     <package name="src.components.Header">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="index.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/components/Header/index.jsx">
+      <file name="index.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/components/Header/index.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="10" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
@@ -73,14 +73,14 @@
       </file>
     </package>
     <package name="src.components.Table">
-      <metrics statements="32" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="11"/>
-      <file name="index.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/components/Table/index.jsx">
-        <metrics statements="31" coveredstatements="30" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
-        <line num="14" count="55" type="stmt"/>
-        <line num="15" count="55" type="stmt"/>
-        <line num="16" count="55" type="stmt"/>
-        <line num="17" count="55" type="stmt"/>
-        <line num="19" count="55" type="stmt"/>
+      <metrics statements="32" coveredstatements="30" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="10"/>
+      <file name="index.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/components/Table/index.jsx">
+        <metrics statements="31" coveredstatements="29" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="9"/>
+        <line num="14" count="51" type="stmt"/>
+        <line num="15" count="51" type="stmt"/>
+        <line num="16" count="51" type="stmt"/>
+        <line num="17" count="51" type="stmt"/>
+        <line num="19" count="51" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
         <line num="21" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
@@ -108,14 +108,14 @@
         <line num="89" count="2" type="stmt"/>
         <line num="96" count="3" type="stmt"/>
       </file>
-      <file name="useStyles.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/components/Table/useStyles.js">
+      <file name="useStyles.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/components/Table/useStyles.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="12" type="stmt"/>
       </file>
     </package>
     <package name="src.components.TableActionButtons">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <file name="index.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/components/TableActionButtons/index.jsx">
+      <file name="index.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/components/TableActionButtons/index.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="7" count="8" type="stmt"/>
         <line num="14" count="8" type="stmt"/>
@@ -127,36 +127,36 @@
     </package>
     <package name="src.hooks">
       <metrics statements="15" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-      <file name="useErros.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/hooks/useErros.js">
+      <file name="useErros.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/hooks/useErros.js">
         <metrics statements="15" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-        <line num="4" count="7" type="stmt"/>
-        <line num="6" count="7" type="stmt"/>
+        <line num="4" count="29" type="stmt"/>
+        <line num="6" count="29" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="32" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="31" type="stmt"/>
+        <line num="17" count="79" type="cond" truecount="1" falsecount="1"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="22" count="8" type="stmt"/>
-        <line num="25" count="7" type="stmt"/>
-        <line num="29" count="7" type="stmt"/>
-        <line num="30" count="7" type="stmt"/>
-        <line num="31" count="28" type="stmt"/>
-        <line num="34" count="7" type="stmt"/>
+        <line num="22" count="31" type="stmt"/>
+        <line num="25" count="29" type="stmt"/>
+        <line num="29" count="29" type="stmt"/>
+        <line num="30" count="29" type="stmt"/>
+        <line num="31" count="74" type="stmt"/>
+        <line num="34" count="29" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.CadastroMarca">
-      <metrics statements="30" coveredstatements="1" conditionals="14" coveredconditionals="0" methods="10" coveredmethods="0"/>
-      <file name="CadastroMarca.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/pages/CadastroMarca/CadastroMarca.jsx">
-        <metrics statements="30" coveredstatements="1" conditionals="14" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+      <metrics statements="30" coveredstatements="24" conditionals="14" coveredconditionals="7" methods="10" coveredmethods="8"/>
+      <file name="CadastroMarca.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/pages/CadastroMarca/CadastroMarca.jsx">
+        <metrics statements="30" coveredstatements="24" conditionals="14" coveredconditionals="7" methods="10" coveredmethods="8"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="20" count="14" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
+        <line num="23" count="14" type="stmt"/>
+        <line num="24" count="14" type="stmt"/>
+        <line num="25" count="14" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
         <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="30" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
@@ -183,17 +183,17 @@
       </file>
     </package>
     <package name="src.pages.CadastroVeiculo">
-      <metrics statements="49" coveredstatements="24" conditionals="24" coveredconditionals="7" methods="21" coveredmethods="6"/>
-      <file name="CadastroVeiculo.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/pages/CadastroVeiculo/CadastroVeiculo.jsx">
-        <metrics statements="49" coveredstatements="24" conditionals="24" coveredconditionals="7" methods="21" coveredmethods="6"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="21" count="7" type="stmt"/>
-        <line num="22" count="7" type="stmt"/>
-        <line num="28" count="7" type="stmt"/>
-        <line num="30" count="7" type="stmt"/>
-        <line num="31" count="7" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
-        <line num="34" count="7" type="stmt"/>
+      <metrics statements="48" coveredstatements="29" conditionals="24" coveredconditionals="9" methods="21" coveredmethods="11"/>
+      <file name="CadastroVeiculo.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/pages/CadastroVeiculo/CadastroVeiculo.jsx">
+        <metrics statements="48" coveredstatements="29" conditionals="24" coveredconditionals="9" methods="21" coveredmethods="11"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="21" count="15" type="stmt"/>
+        <line num="22" count="15" type="stmt"/>
+        <line num="28" count="15" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
+        <line num="31" count="15" type="stmt"/>
+        <line num="32" count="15" type="stmt"/>
+        <line num="34" count="15" type="stmt"/>
         <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
@@ -206,40 +206,39 @@
         <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="61" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="68" count="7" type="stmt"/>
-        <line num="70" count="7" type="stmt"/>
-        <line num="71" count="3" type="stmt"/>
+        <line num="68" count="15" type="stmt"/>
+        <line num="70" count="15" type="stmt"/>
+        <line num="71" count="6" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="75" count="7" type="stmt"/>
-        <line num="76" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
+        <line num="75" count="15" type="stmt"/>
+        <line num="76" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="77" count="3" type="stmt"/>
+        <line num="79" count="3" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
         <line num="94" count="1" type="stmt"/>
         <line num="95" count="1" type="stmt"/>
         <line num="96" count="1" type="stmt"/>
-        <line num="97" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
         <line num="103" count="1" type="stmt"/>
-        <line num="104" count="1" type="stmt"/>
-        <line num="106" count="0" type="stmt"/>
-        <line num="110" count="7" type="stmt"/>
-        <line num="119" count="1" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="109" count="15" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="120" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="121" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="122" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="122" count="0" type="stmt"/>
         <line num="123" count="0" type="stmt"/>
-        <line num="124" count="0" type="stmt"/>
-        <line num="127" count="1" type="stmt"/>
-        <line num="135" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="162" count="0" type="stmt"/>
-        <line num="183" count="0" type="stmt"/>
+        <line num="126" count="1" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="162" count="1" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
         <line num="204" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.ListagemMarcas">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="ListagemMarcas.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/pages/ListagemMarcas/ListagemMarcas.jsx">
+      <file name="ListagemMarcas.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/pages/ListagemMarcas/ListagemMarcas.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="6" count="7" type="stmt"/>
         <line num="8" count="7" type="stmt"/>
@@ -249,7 +248,7 @@
     </package>
     <package name="src.pages.ListagemVeiculos">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="ListagemVeiculos.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/pages/ListagemVeiculos/ListagemVeiculos.jsx">
+      <file name="ListagemVeiculos.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/pages/ListagemVeiculos/ListagemVeiculos.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="8" count="7" type="stmt"/>
         <line num="15" count="7" type="stmt"/>
@@ -259,24 +258,24 @@
     </package>
     <package name="src.routes">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.jsx" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/routes/index.jsx">
+      <file name="index.jsx" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/routes/index.jsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="12" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.services">
       <metrics statements="14" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="2"/>
-      <file name="MarcaService.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/services/MarcaService.js">
+      <file name="MarcaService.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/services/MarcaService.js">
         <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
         <line num="3" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
       </file>
-      <file name="VeiculoService.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/services/VeiculoService.js">
+      <file name="VeiculoService.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/services/VeiculoService.js">
         <metrics statements="7" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
         <line num="3" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
@@ -289,7 +288,7 @@
     </package>
     <package name="src.utils">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.js" path="/Users/graysoncunha/Documents/workspace/carango-bom/carango-bom-base/src/utils/index.js">
+      <file name="index.js" path="/Users/lauraoliveira/Documents/workspace/carango-bom-base/src/utils/index.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
