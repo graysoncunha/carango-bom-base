@@ -1,10 +1,10 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import CadastroVeiculo from './CadastroVeiculo'
 import VeiculoService from '../../services/VeiculoService'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
+// import { Router } from 'react-router-dom'
+// import { createMemoryHistory } from 'history'
 
 const veiculoMock = [
   {
@@ -17,7 +17,7 @@ const veiculoMock = [
 ]
 
 jest.mock('../../services/VeiculoService')
-const history = createMemoryHistory()
+// const history = createMemoryHistory()
 describe('Componente de cadastro de veículos', () => {
   beforeEach(async () => {
     jest.clearAllMocks()
