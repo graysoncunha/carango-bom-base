@@ -41,7 +41,6 @@ function Table({ service, colunas, formatar, caminhoCadastro, caminhoAlteracao }
       {
         field: '',
         sortable: false,
-        flex: 1,
         renderCell: (params) => (
           <TableActionButtons row={params.row} onClickDelete={onClickDelete} onClickEdit={onClickEdit} />
         ),
