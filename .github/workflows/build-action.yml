@@ -55,7 +55,7 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: Run build
         run: npm run build
-        - name: Lighthouse
+      - name: Lighthouse
         run: |
           npm install -g @lhci/cli@0.6.x
           lhci autorun
