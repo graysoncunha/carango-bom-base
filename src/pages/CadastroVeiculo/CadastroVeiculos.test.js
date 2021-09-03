@@ -1,8 +1,8 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import CadastroVeiculo from './CadastroVeiculo'
-import Routes from '../../routes'
+// import Routes from '../../routes'
 
 describe('Componente de cadastro de veículos', () => {
   it('deve carregar a página de cadastro de veículo', () => {
