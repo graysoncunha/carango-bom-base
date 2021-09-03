@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import ListagemVeiculos from '../ListagemVeiculos/ListagemVeiculos'
 import VeiculoService from '../../services/VeiculoService'
@@ -43,14 +43,27 @@ describe('Componente de cadastro de veículos', () => {
     expect(history.location.pathname).toBe(`/alteracao-veiculo/${veiculoMock[0].id}`)
   })
 
-  // TODO: Ver se a função submit foi chamada com o clique do botão
-  //   it('quando o formulário é enviado, chama a função de cadastrar', () => {
-  //     const funcaoRealizarTransacao = jest.fn()
+  it('quando o formulário é enviado, os campso devem ser validados', () => {
+    render(<CadastroVeiculo />, { wrapper: MemoryRouter })
 
-  //     render(<Conta saldo={1000} realizarTransacao={funcaoRealizarTransacao} />)
+    fireEvent.click(screen.getByText('Cadastrar'))
 
-  //     fireEvent.click(screen.getByText('Realizar operação'))
+    waitFor(() => expect(screen.getByText('Marca é obrigatória.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Modelo deve ter ao menos 2 caracteres.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Ano deve ter ao menos 4 caracteres.')).toBeInTheDocument())
+    waitFor(() => expect(screen.getByText('Valor é obrigatório.')).toBeInTheDocument())
+  })
 
-  //     expect(funcaoRealizarTransacao).toHaveBeenCalled()
-  //   })
+  // it('o formulário deve ser enviado quando os campos forem válidos', () => {
+  //   render(<CadastroVeiculo />, { wrapper: MemoryRouter })
+
+  //   console.log(screen.getByRole('input'))
+
+  //   fireEvent.click(screen.getByText('Cadastrar'))
+
+  //   waitFor(() => expect(screen.getByText('Marca é obrigatória.')).toBeInTheDocument())
+  //   waitFor(() => expect(screen.getByText('Modelo deve ter ao menos 2 caracteres.')).toBeInTheDocument())
+  //   waitFor(() => expect(screen.getByText('Ano deve ter ao menos 4 caracteres.')).toBeInTheDocument())
+  //   waitFor(() => expect(screen.getByText('Valor é obrigatório.')).toBeInTheDocument())
+  // })
 })
