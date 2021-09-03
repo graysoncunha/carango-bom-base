@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
-import ListagemVeiculos from './index'
+import ListagemVeiculos from './ListagemVeiculos'
 import VeiculoService from '../../services/VeiculoService'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'

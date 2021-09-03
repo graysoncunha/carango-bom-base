@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
-import CadastroMarca from '../pages/CadastroMarca'
-import CadastroVeiculo from '../pages/CadastroVeiculo'
-import ListagemMarcas from '../pages/ListagemMarcas'
-import ListagemVeiculos from '../pages/ListagemVeiculos/index'
+import CadastroMarca from '../pages/CadastroMarca/CadastroMarca'
+import CadastroVeiculo from '../pages/CadastroVeiculo/CadastroVeiculo'
+import ListagemMarcas from '../pages/ListagemMarcas/ListagemMarcas'
+import ListagemVeiculos from '../pages/ListagemVeiculos/ListagemVeiculos'
 import Header from '../components/Header'
 
 function Routes() {
