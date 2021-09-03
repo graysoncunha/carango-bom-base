@@ -10,7 +10,7 @@ import TableActionButtons from '../../components/TableActionButtons'
 
 import useStyles from './useStyles'
 
-function Table({ service, colunas, formatar, caminhoCadastro }) {
+function Table({ service, colunas, formatar, caminhoCadastro, caminhoAlteracao }) {
   const [itens, setItens] = useState([])
   const [{ status, error }, setStatus] = useState({ status: 'idle', error: null })
   const classes = useStyles()
@@ -31,8 +31,8 @@ function Table({ service, colunas, formatar, caminhoCadastro }) {
     }
   }
 
-  const onClickEdit = async (row) => {
-    history.push(`/alteracao-veiculo/${row.id}`)
+  const onClickEdit = (row) => {
+    history.push(`${caminhoAlteracao}/${row.id}`)
   }
 
   const colunasMemo = useMemo(() => {
@@ -98,5 +98,6 @@ Table.propTypes = {
   colunas: PropTypes.array.isRequired,
   formatar: PropTypes.func.isRequired,
   caminhoCadastro: PropTypes.string.isRequired,
+  caminhoAlteracao: PropTypes.string.isRequired,
 }
 export default Table

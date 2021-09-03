@@ -23,7 +23,13 @@ function ListagemVeiculos() {
   }
 
   return (
-    <Table service={VeiculoService} colunas={colunas} formatar={formatarVeiculos} caminhoCadastro="/cadastro-veiculo" />
+    <Table
+      service={VeiculoService}
+      colunas={colunas}
+      formatar={formatarVeiculos}
+      caminhoCadastro="/cadastro-veiculo"
+      caminhoAlteracao="/alteracao-veiculo"
+    />
   )
 }
 
