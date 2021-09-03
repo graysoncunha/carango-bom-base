@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import { Button, TextField, MenuItem, makeStyles } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
-import useErros from '../hooks/useErros'
-import VeiculoService from '../services/VeiculoService'
-import MarcaService from '../services/MarcaService'
+import useErros from '../../hooks/useErros'
+import VeiculoService from '../../services/VeiculoService'
+import MarcaService from '../../services/MarcaService'
 
 const useStyles = makeStyles((theme) => ({
   actions: {
