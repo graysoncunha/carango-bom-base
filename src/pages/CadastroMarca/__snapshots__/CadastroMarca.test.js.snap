@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Componente de cadastro de marcas deve carregar a página de cadastro de marca 1`] = `
+<form>
+  <div
+    class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+  >
+    <label
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+      data-shrink="false"
+      for="marca"
+      id="marca-label"
+    >
+      Marca
+      <span
+        aria-hidden="true"
+        class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+      >
+         
+        *
+      </span>
+    </label>
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiOutlinedInput-input"
+        id="marca"
+        name="marca"
+        required=""
+        type="text"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="PrivateNotchedOutline-legendLabelled-5"
+        >
+          <span>
+            Marca
+             *
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+    
+  </div>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-actions-1 MuiButton-containedPrimary"
+    tabindex="0"
+    type="submit"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Cadastrar
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-actions-1 MuiButton-containedSecondary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Cancelar
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</form>
+`;
